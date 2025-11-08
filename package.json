@@ -1,0 +1,32 @@
+{
+  "name": "nodejs-crud-api",
+  "version": "1.0.0",
+  "description": "Node.js CRUD API using only built-in modules",
+  "main": "server.ts",
+  "scripts": {
+    "start": "ts-node server.ts",
+    "start:dev": "ts-node server.ts"
+  },
+  "keywords": [
+    "node",
+    "http",
+    "crud",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notawhalea/nodejs-crud-api.git"
+  },
+  "private": true,
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/uuid": "^9.0.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
