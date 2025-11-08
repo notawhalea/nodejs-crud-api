@@ -1,16 +1,16 @@
-import * as http from 'http';
-import { IncomingMessage, ServerResponse } from 'http';
+import { IncomingMessage, ServerResponse, createServer } from 'http';
+import 'dotenv/config'
 import {
     getUsers,
     getUser,
     createUser,
     updateUser,
     deleteUser
-} from './user.controller';
+} from './controllers/user.controller';
 
 const PORT: number = parseInt(process.env.PORT || '4000', 10);
 
-const server = http.createServer(async (req: IncomingMessage, res: ServerResponse) => {
+const server = createServer(async (req: IncomingMessage, res: ServerResponse) => {
     const url = req.url || '/';
     const method = req.method;
 
@@ -26,7 +26,7 @@ const server = http.createServer(async (req: IncomingMessage, res: ServerRespons
                     await createUser(req, res);
                     break;
                 default:
-                    res.writeHead(405, { 'Content-Type': 'application/json' });
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify({ message: 'Method Not Allowed' }));
                     break;
             }
@@ -46,7 +46,7 @@ const server = http.createServer(async (req: IncomingMessage, res: ServerRespons
                     deleteUser(req, res, userId);
                     break;
                 default:
-                    res.writeHead(405, { 'Content-Type': 'application/json' });
+                    res.writeHead(404, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify({ message: 'Method Not Allowed' }));
                     break;
             }

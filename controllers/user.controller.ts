@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import { User, UserDTO } from './user.model';
-import * as DataService from './data.service';
-import { parseBody } from './utils';
+import { User, UserDTO } from '../models/user.model';
+import * as DataService from '../services/data.service';
+import { parseBody } from '../utils/utils';
 
 const sendResponse = (res: ServerResponse, statusCode: number, data: any) => {
     res.writeHead(statusCode, { 'Content-Type': 'application/json' });
@@ -11,7 +11,7 @@ const sendResponse = (res: ServerResponse, statusCode: number, data: any) => {
 export const getUsers = (req: IncomingMessage, res: ServerResponse): void => {
     try {
         const users: User[] = DataService.findAll();
-        sendResponse(res, 200, users); // 200 OK
+        sendResponse(res, 200, users);
     } catch (error) {
         console.error('Error fetching users:', error);
         sendResponse(res, 500, { message: 'Internal Server Error' });
@@ -47,7 +47,7 @@ export const createUser = async (req: IncomingMessage, res: ServerResponse): Pro
             !body.age || typeof body.age !== 'number' ||
             !body.hobbies || !Array.isArray(body.hobbies) || body.hobbies.some((h: any) => typeof h !== 'string')) {
 
-            sendResponse(res, 400, { message: 'Required fields (username: string, age: number, hobbies: string[]) are missing or have invalid types' }); // 400 Bad Request
+            sendResponse(res, 400, { message: 'Required fields (username: string, age: number, hobbies: string[]) are missing or have invalid types' });
             return;
         }
 

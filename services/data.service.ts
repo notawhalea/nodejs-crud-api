@@ -1,12 +1,8 @@
-import { User, UserDTO } from './user.model';
+import { User, UserDTO } from '../models/user.model';
 import { v4 as uuidv4 } from 'uuid';
 import { validate as uuidValidate } from 'uuid';
 
 let users: User[] = [];
-
-export const setAll = (newUsers: User[]): void => {
-    users = newUsers;
-};
 
 export const findAll = (): User[] => {
     return users;
