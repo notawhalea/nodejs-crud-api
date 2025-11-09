@@ -44,7 +44,7 @@ function makeRequest(method: string, path: string, data?: any): Promise<{ status
                     resolve({ statusCode: res.statusCode || 500, body: parsedBody });
                 } catch (e) {
                     console.error('Failed to parse JSON response:', responseBody);
-                    resolve({ statusCode: res.statusCode || 500, body: responseBody }); // Возвращаем сырой текст при ошибке парсинга
+                    resolve({ statusCode: res.statusCode || 500, body: responseBody });
                 }
             });
         });
