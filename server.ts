@@ -27,8 +27,8 @@ export const createServer = () => {
                         await createUser(req, res);
                         break;
                     default:
-                        res.writeHead(405, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ message: 'Method Not Allowed' }));
+                        res.writeHead(404, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ message: 'Method Not Found' }));
                         break;
                 }
                 return;
@@ -47,8 +47,8 @@ export const createServer = () => {
                         await deleteUser(req, res, userId);
                         break;
                     default:
-                        res.writeHead(405, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ message: 'Method Not Allowed' }));
+                        res.writeHead(404, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ message: 'Method Not Found' }));
                         break;
                 }
                 return;
