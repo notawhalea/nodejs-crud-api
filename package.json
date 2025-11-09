@@ -6,6 +6,7 @@
   "scripts": {
     "start:dev": "ts-node-dev server.ts",
     "start:prod": "tsc && node dist/server.js",
+    "start:multi": "ts-node cluster.ts",
     "test": "ts-node tests/tests.ts"
   },
   "keywords": [

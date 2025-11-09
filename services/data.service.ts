@@ -16,7 +16,7 @@ export const findById = (id: string): User | undefined => {
     return users.find(u => u.id === id);
 };
 
-export const create = (userData: UserDTO): User => {
+export let create = (userData: UserDTO): User => {
     const newUser: User = {
         id: uuidv4(),
         ...userData,
@@ -26,7 +26,7 @@ export const create = (userData: UserDTO): User => {
     return newUser;
 };
 
-export const update = (id: string, userData: UserDTO): User | undefined => {
+export let update = (id: string, userData: UserDTO): User | undefined => {
     const index = users.findIndex(u => u.id === id);
     if (index === -1) {
         return undefined;
@@ -41,7 +41,7 @@ export const update = (id: string, userData: UserDTO): User | undefined => {
     return updatedUser;
 };
 
-export const remove = (id: string): boolean => {
+export let remove = (id: string): boolean => {
     const initialLength = users.length;
     users = users.filter(u => u.id !== id);
     return users.length < initialLength;

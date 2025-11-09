@@ -1,4 +1,4 @@
-import { IncomingMessage, ServerResponse, createServer, Server } from 'http';
+import { IncomingMessage, ServerResponse, createServer as createSrv, Server } from 'http';
 import 'dotenv/config'
 import {
     getUsers,
@@ -7,11 +7,11 @@ import {
     updateUser,
     deleteUser
 } from './controllers/user.controller';
-import * as DataService from './services/data.service';
 
 const PORT: number = parseInt(process.env.PORT || '4000', 10);
 
-export const server: Server = createServer(async (req: IncomingMessage, res: ServerResponse) => {
+export const createServer = () => {
+    const server: Server = createSrv(async (req: IncomingMessage, res: ServerResponse) => {
     const url = req.url || '/';
     const method = req.method;
     const urlParts = url.split('/').filter(p => p.length > 0);
@@ -64,12 +64,17 @@ export const server: Server = createServer(async (req: IncomingMessage, res: Ser
     }
 });
 
+    server.on('error', (err) => {
+        console.error('Server error:', err);
+    });
+
+    return server;
+};
+
+export const server = createServer();
+
 if (require.main === module) {
     server.listen(PORT, () => {
         console.log(`Server started and listening on port ${PORT}`);
     });
 }
-
-server.on('error', (err: NodeJS.ErrnoException) => {
-    console.error('Server error:', err);
-});

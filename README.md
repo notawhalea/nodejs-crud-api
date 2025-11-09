@@ -33,7 +33,7 @@ PORT=4000
 
 ## Running the Application
 
-The application can be run in three different modes:
+The application can be run in different modes:
 
 ### Development Mode
 
@@ -47,6 +47,12 @@ Runs the server using ts-node-dev with hot reload.
 
 ```bash
 npm run start:prod
+```
+
+### Cluster Mode
+
+```bash
+npm run start:multi
 ```
 ## Testing
 
