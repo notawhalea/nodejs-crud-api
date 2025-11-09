@@ -5,7 +5,8 @@
   "main": "server.ts",
   "scripts": {
     "start:dev": "ts-node-dev server.ts",
-    "start:prod": "tsc && node dist/server.js"
+    "start:prod": "tsc && node dist/server.js",
+    "test": "ts-node tests/tests.ts"
   },
   "keywords": [
     "node",

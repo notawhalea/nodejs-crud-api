@@ -106,7 +106,6 @@ export const updateUser = async (req: IncomingMessage, res: ServerResponse, user
         } else {
             sendResponse(res, 404, { message: 'User not found during update' });
         }
-
     } catch (error) {
         console.error(`Error updating user ${userId}:`, error);
         if (error instanceof SyntaxError) {

@@ -8,6 +8,10 @@ export const findAll = (): User[] => {
     return users;
 };
 
+export const setAll = (newUsers: User[]): void => {
+    users = newUsers;
+};
+
 export const findById = (id: string): User | undefined => {
     return users.find(u => u.id === id);
 };
